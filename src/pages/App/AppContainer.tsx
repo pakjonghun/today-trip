@@ -16,6 +16,30 @@ const AppContainer = () => {
       const { latitude, longitude } = JSON.parse(location);
       setLatitude(latitude);
       setLongitude(longitude);
+    } else {
+      if ("geolocation" in navigator && (!latitude || !longitude)) {
+        navigator.geolocation.getCurrentPosition(success, fail);
+      } else {
+        setLongitude(127);
+        setLatitude(37);
+        setIsLoading(false);
+      }
+    }
+
+    function success(position: GeolocationPosition) {
+      const { latitude, longitude } = position.coords;
+      setLongitude(longitude);
+      setLatitude(latitude);
+      window.localStorage.setItem(
+        "location",
+        JSON.stringify({ latitude, longitude })
+      );
+    }
+
+    function fail(error: unknown) {
+      if (error instanceof Error) {
+        alert(error.message);
+      }
     }
   }, []);
 
@@ -25,26 +49,6 @@ const AppContainer = () => {
       dispatch(actions.location({ longitude, latitude }));
     }
   }, [longitude, latitude, dispatch]);
-
-  function success(position: GeolocationPosition) {
-    const { latitude, longitude } = position.coords;
-    setLongitude(longitude);
-    setLatitude(latitude);
-    window.localStorage.setItem(
-      "location",
-      JSON.stringify({ latitude, longitude })
-    );
-  }
-
-  function fail(error: unknown) {
-    if (error instanceof Error) {
-      alert(error.message);
-    }
-  }
-
-  if ("geolocation" in navigator && !latitude) {
-    navigator.geolocation.getCurrentPosition(success, fail);
-  }
 
   return <AppPresenter isLoading={isLoading} />;
 };
