@@ -47,6 +47,12 @@ const AppContainer = () => {
     if (latitude && longitude) {
       setIsLoading(false);
       dispatch(actions.location({ longitude, latitude }));
+    } else {
+      setTimeout(() => {
+        setLongitude(127);
+        setLatitude(37);
+        setIsLoading(false);
+      }, 3000);
     }
   }, [longitude, latitude, dispatch]);
 
