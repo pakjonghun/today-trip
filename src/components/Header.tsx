@@ -9,7 +9,7 @@ const Header = () => {
     <div className="w-full min-h-screen max-w-screen-2xl mx-auto bg-gray-50">
       <header
         className={joinStyleClass(
-          "w-full px-10 py-3 text-gray-800",
+          "w-full px-10 py-3 text-gray-900 text-xl z-10",
           pathname.includes("option") ? "" : "absolute top-0"
         )}
       >

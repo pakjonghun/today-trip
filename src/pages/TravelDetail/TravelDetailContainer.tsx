@@ -25,8 +25,8 @@ const TravelDetailContainer = () => {
   const navigate = useNavigate();
   const { travel_theme, location } = useAppSelector((state) => state.option);
   const [images, setImages] = useState([basicImage1, basicImage2]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [_, setIsError] = useState(false);
   const [searchCount, setSearchCount] = useState(0);
   const [randomItem, setRandomItem] = useState<itemsType>(initItem);
   const { tel, title, overview, homepage, addr1, contenttypeid, contentid } =
@@ -70,10 +70,6 @@ const TravelDetailContainer = () => {
         setIsError(true);
       }
     })();
-    return () => {
-      setRandomItem(initItem);
-      setImages([basicImage1, basicImage2]);
-    };
   }, [location, travel_theme, searchCount]);
 
   useEffect(() => {

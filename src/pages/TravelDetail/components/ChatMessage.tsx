@@ -23,7 +23,7 @@ const ChatMessage: React.FC<IChatMessage> = ({
   return (
     <div
       className={joinStyleClass(
-        "absolute right-5 flex p-3 bg-gray-100 rounded-lg",
+        "absolute right-5 flex p-3 bg-gray-100 shadow-md rounded-lg",
         topPosition[locationIndex]
       )}
     >

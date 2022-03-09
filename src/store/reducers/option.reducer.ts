@@ -49,10 +49,9 @@ const optionSlice = createSlice({
     ) => {
       let index = -1;
 
-      state.travel_theme.find((item, idx) => {
+      state.travel_theme.forEach((item, idx) => {
         if (item === payload.travel_theme) {
           index = idx;
-          return true;
         }
       });
 

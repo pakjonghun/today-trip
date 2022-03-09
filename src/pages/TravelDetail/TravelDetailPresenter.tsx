@@ -39,7 +39,7 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
 
       <div
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0) 30%, rgba(255,255,255,1) 100%), url(${curImage})`,
+          backgroundImage: `linear-gradient(rgba(255,255,255,.4) 70%, rgba(255,255,255,1) 100%), url(${curImage})`,
         }}
         className="flex-center top-0 w-full h-[70vh] mx-auto bg-cover bg-center bg-no-repeat shadow-inner blur-sm"
       />
@@ -48,7 +48,7 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
           Hellow! <br />
         </h1>
         <div className="flex w-[95%] mx-auto">
-          <div className="flex flex-col w-[35%]">
+          <div className="flex flex-col w-[35%] sm:w-[57%] md:w-[65%] lg:w-[73%]">
             <h2 className="mb-4">About</h2>
             {travel_theme && <p>여행테마 : {travel_theme.join(", ")}</p>}
             {title && <p>{title}</p>}
@@ -78,7 +78,7 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
           </div>
 
           <ChatMessage
-            isLoading={isLoading || !title}
+            isLoading={isLoading}
             firstLineMessage={
               title ? `오늘은 ${title.substring(0, 6)}...` : "검색된 여행지가"
             }
