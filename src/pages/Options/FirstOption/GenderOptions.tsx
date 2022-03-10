@@ -11,7 +11,7 @@ const GenderOptions = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="flex justify-around w-[80%] md:w-[50%] my-5">
+    <div className="flex justify-around w-full md:w-[80%] mx-auto my-5">
       {options.map(({ id, title, content, iconType, isSelected }) => (
         <BasicIconBox
           selectFunc={() => {

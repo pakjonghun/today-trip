@@ -14,10 +14,10 @@ const Options: React.FC = (props) => {
   }, [age, gender, props]);
 
   return (
-    <>
+    <div>
       <GenderOptions />
       <AgeOptions />
-    </>
+    </div>
   );
 };
 
