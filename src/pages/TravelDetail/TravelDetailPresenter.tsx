@@ -70,7 +70,7 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
         >
           <div
             className={joinStyleClass(
-              "flex flex-col justify-between items-end h-[35vh] transition-transform duration-100 origin-top",
+              "flex flex-col justify-between items-end h-[38vh] transition-transform duration-100 origin-top",
               isMessageOpen ? "scale-y--100" : "scale-y-0"
             )}
           >
@@ -102,7 +102,7 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
                     setSearchCount((pre) => pre + 1);
                   }}
                   className={joinStyleClass(
-                    "scale-effect text-pink-400",
+                    "scale-effect text-pink-400 z-20",
                     isLoading ? "opacity-50 pointer-events-none" : "",
                     title ? "" : "opacity-50 pointer-events-none"
                   )}

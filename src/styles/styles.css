@@ -785,6 +785,18 @@ h2 {
   height: 24rem;
 }
 
+.h-\[45vh\] {
+  height: 45vh;
+}
+
+.h-\[40vh\] {
+  height: 40vh;
+}
+
+.h-\[38vh\] {
+  height: 38vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
