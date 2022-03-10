@@ -20,6 +20,7 @@ import {
 } from "./types";
 import { category1, category2, initItem } from "./constants";
 import TravelDetailPresenter from "./TravelDetailPresenter";
+import { useTransform, useViewportScroll } from "framer-motion";
 
 const TravelDetailContainer = () => {
   const navigate = useNavigate();
@@ -29,18 +30,25 @@ const TravelDetailContainer = () => {
   const [_, setIsError] = useState(false);
   const [searchCount, setSearchCount] = useState(0);
   const [randomItem, setRandomItem] = useState<itemsType>(initItem);
+  const [overviewEnd, setOverviewEnd] = useState(500);
+  const [isMessageOpen, setIsMessageOpen] = useState(true);
   const { tel, title, overview, homepage, addr1, contenttypeid, contentid } =
     randomItem;
 
   const curIndex = useImageSwitcher({
     imageLength: images.length,
-    duration: 10000,
+    duration: 5000,
   });
+
+  const { scrollY } = useViewportScroll();
+  const messagesAnimation = useTransform(scrollY, [20, 50], [1, 0]);
 
   useEffect(() => {
     if (!travel_theme.length) {
       navigate("/");
     }
+
+    return () => setIsLoading(true);
   }, [travel_theme, navigate]);
 
   useEffect(() => {
@@ -114,13 +122,24 @@ const TravelDetailContainer = () => {
     })();
   }, [contentid, contenttypeid]);
 
+  const temp = overview
+    ?.replaceAll("<br>", " ")
+    .replaceAll("<strong>", " ")
+    .replaceAll("<br/>", " ")
+    .replaceAll("<br />", " ");
+
   return (
     <TravelDetailPresenter
+      temp={temp}
+      overviewEnd={overviewEnd}
+      isMessageOpen={isMessageOpen}
+      messagesAnimation={messagesAnimation}
       isLoading={isLoading}
       curImage={images[curIndex]}
       travel_theme={travel_theme}
+      setIsMessageOpen={setIsMessageOpen}
+      setOverviewEnd={setOverviewEnd}
       setSearchCount={setSearchCount}
-      overview={overview}
       title={title}
       tel={tel}
       addr1={addr1}

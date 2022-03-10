@@ -3,7 +3,6 @@ import { joinStyleClass } from "../../../utility";
 import Avatar from "./Avatar";
 
 interface IChatMessage {
-  locationIndex: number;
   firstLineMessage: string;
   secondLineMessage?: string;
   actionButton?: ReactElement;
@@ -11,22 +10,14 @@ interface IChatMessage {
 }
 
 const ChatMessage: React.FC<IChatMessage> = ({
-  locationIndex,
   firstLineMessage,
   secondLineMessage,
   actionButton,
   isLoading,
 }) => {
-  const topPosition = ["top-20", "top-40", "top-60", "top-80"];
-
   const isExist = secondLineMessage || actionButton;
   return (
-    <div
-      className={joinStyleClass(
-        "absolute right-5 flex p-3 bg-gray-100 shadow-md rounded-lg",
-        topPosition[locationIndex]
-      )}
-    >
+    <div className="flex py-3 px-5 w-fit bg-gray-100 shadow-md rounded-lg">
       <Avatar />
       <p
         className={joinStyleClass(
