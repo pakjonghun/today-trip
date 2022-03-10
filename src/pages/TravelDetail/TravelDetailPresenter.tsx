@@ -66,7 +66,7 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
 
         <motion.div
           style={{ opacity: messagesAnimation }}
-          className="absolute top-32 right-5 flex flex-col items-end"
+          className="absolute top-28 right-5 flex flex-col items-end"
         >
           <div
             className={joinStyleClass(
