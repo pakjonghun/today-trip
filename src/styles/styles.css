@@ -682,8 +682,8 @@ h2 {
   top: -6rem;
 }
 
-.top-32 {
-  top: 8rem;
+.top-24 {
+  top: 6rem;
 }
 
 .right-5 {
@@ -692,14 +692,6 @@ h2 {
 
 .top-\[55vh\] {
   top: 55vh;
-}
-
-.top-28 {
-  top: 7rem;
-}
-
-.top-24 {
-  top: 6rem;
 }
 
 .z-10 {
@@ -785,24 +777,12 @@ h2 {
   height: 75vh;
 }
 
-.h-\[35vh\] {
-  height: 35vh;
+.h-\[38vh\] {
+  height: 38vh;
 }
 
 .h-96 {
   height: 24rem;
-}
-
-.h-\[45vh\] {
-  height: 45vh;
-}
-
-.h-\[40vh\] {
-  height: 40vh;
-}
-
-.h-\[38vh\] {
-  height: 38vh;
 }
 
 .min-h-screen {
