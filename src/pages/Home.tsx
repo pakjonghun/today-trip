@@ -34,13 +34,13 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute top-0 flex-center  w-full h-screen mx-auto bg-cover bg-center bg-no-repeat"
+          className="absolute top-0 w-full h-screen mx-auto bg-cover bg-center bg-no-repeat"
         />
       </AnimatePresence>
 
       <main className="z-10">
-        <div className="relative -top-5 flex flex-col items-center justify-between h-[25vh]">
-          <div className="flex flex-col justify-between items-center text-gray-50 text-2xl sm:text-4xl -space-y-1">
+        <div className="relative -top-24 flex flex-col items-center justify-between h-[20vh]">
+          <div className="flex flex-col justify-between items-center text-gray-50 space-y-1">
             <h1>1분안에 나만의 여행을 계획하고 </h1>
             <h1>당일치기 여행 지금 바로 떠나자!</h1>
           </div>
