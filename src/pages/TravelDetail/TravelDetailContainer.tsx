@@ -27,7 +27,7 @@ const TravelDetailContainer = () => {
   const { travel_theme, location } = useAppSelector((state) => state.option);
   const [images, setImages] = useState([basicImage1, basicImage2]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_, setIsError] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [searchCount, setSearchCount] = useState(0);
   const [randomItem, setRandomItem] = useState<itemsType>(initItem);
   const [overviewEnd, setOverviewEnd] = useState(500);
@@ -41,7 +41,7 @@ const TravelDetailContainer = () => {
   });
 
   const { scrollY } = useViewportScroll();
-  const messagesAnimation = useTransform(scrollY, [20, 50], [1, 0]);
+  const messagesAnimation = useTransform(scrollY, [50, 100], [1, 0]);
 
   useEffect(() => {
     if (!travel_theme.length) {
@@ -79,6 +79,10 @@ const TravelDetailContainer = () => {
       }
     })();
   }, [location, travel_theme, searchCount]);
+
+  useEffect(() => {
+    setIsLoading(true);
+  }, [isError]);
 
   useEffect(() => {
     (async () => {
@@ -122,15 +126,39 @@ const TravelDetailContainer = () => {
     })();
   }, [contentid, contenttypeid]);
 
-  const temp = overview
-    ?.replaceAll("<br>", " ")
-    .replaceAll("<strong>", " ")
-    .replaceAll("<br/>", " ")
-    .replaceAll("<br />", " ");
+  useEffect(() => {
+    const badTags = [
+      "</ strong>",
+      "</strong>",
+      "<strong>",
+      "</ b>",
+      "</b>",
+      "<b>",
+      "<u>",
+      "</u>",
+      "</ u>",
+      "</ a>",
+      "</a>",
+      "<a>",
+      "<br/ >",
+      "<br>",
+      "<br />",
+      "<br/>",
+    ];
+
+    let newOverview = overview;
+    if (newOverview) {
+      for (const badTag of badTags) {
+        newOverview = newOverview.replaceAll(badTag, " ");
+      }
+    }
+
+    setRandomItem((pre) => ({ ...pre, overview: newOverview }));
+  }, [overview]);
 
   return (
     <TravelDetailPresenter
-      temp={temp}
+      temp={overview}
       overviewEnd={overviewEnd}
       isMessageOpen={isMessageOpen}
       messagesAnimation={messagesAnimation}

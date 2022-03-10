@@ -6,6 +6,8 @@ import { detailParamsType, itemsType, locationParamsType } from "./types";
 axios.defaults.baseURL =
   "http://api.visitkorea.or.kr/openapi/service/rest/KorService";
 
+axios.defaults.timeout = 2000;
+
 export const locationParamMaker = (
   mapX: number,
   mapY: number,
