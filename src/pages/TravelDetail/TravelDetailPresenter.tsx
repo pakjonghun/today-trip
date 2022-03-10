@@ -44,11 +44,8 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
         className="flex-center top-0 w-full h-[70vh] mx-auto bg-cover bg-center bg-no-repeat shadow-inner blur-sm"
       />
       <main className="relative -top-60">
-        <h1 className="absolute right-5 text-right">
-          Hellow! <br />
-        </h1>
         <div className="flex w-[95%] mx-auto">
-          <div className="flex flex-col w-[35%] sm:w-[57%] md:w-[65%] lg:w-[73%]">
+          <div className="flex flex-col w-[90%]">
             <h2 className="mb-4">About</h2>
             {travel_theme && <p>여행테마 : {travel_theme.join(", ")}</p>}
             {title && <p>{title}</p>}
@@ -76,55 +73,57 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
               </p>
             )}
           </div>
+          <div className="fixed top-16 right-2 h-full w-full">
+            <h1 className="absolute right-5 text-right">
+              Hellow! <br />
+            </h1>
+            <ChatMessage
+              isLoading={isLoading}
+              firstLineMessage={title ? `오늘은 ${title}` : "검색된 여행지가"}
+              secondLineMessage={title ? " 어떠신가요?" : "없습니다."}
+              locationIndex={0}
+            />
 
-          <ChatMessage
-            isLoading={isLoading}
-            firstLineMessage={
-              title ? `오늘은 ${title.substring(0, 6)}...` : "검색된 여행지가"
-            }
-            secondLineMessage={title ? " 어떠신가요?" : "없습니다."}
-            locationIndex={0}
-          />
+            <ChatMessage
+              firstLineMessage={"다시 시작 하려면"}
+              actionButton={
+                <button
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                  className="scale-effect text-pink-400"
+                >
+                  다시 시작하기
+                </button>
+              }
+              locationIndex={1}
+            />
 
-          <ChatMessage
-            firstLineMessage={"다시 시작 하려면"}
-            actionButton={
-              <button
-                onClick={() => {
-                  navigate("/");
-                }}
-                className="scale-effect text-pink-400"
-              >
-                다시 시작하기
-              </button>
-            }
-            locationIndex={1}
-          />
+            <ChatMessage
+              firstLineMessage={"다른 여행지를 검색 하려면"}
+              actionButton={
+                <button
+                  onClick={() => {
+                    setSearchCount((pre) => pre + 1);
+                  }}
+                  className={joinStyleClass(
+                    "scale-effect text-pink-400",
+                    isLoading ? "opacity-50 pointer-events-none" : "",
+                    title ? "" : "opacity-50 pointer-events-none"
+                  )}
+                >
+                  여행지 다시 고르기
+                </button>
+              }
+              locationIndex={2}
+            />
 
-          <ChatMessage
-            firstLineMessage={"다른 여행지를 검색 하려면"}
-            actionButton={
-              <button
-                onClick={() => {
-                  setSearchCount((pre) => pre + 1);
-                }}
-                className={joinStyleClass(
-                  "scale-effect text-pink-400",
-                  isLoading ? "opacity-50 pointer-events-none" : "",
-                  title ? "" : "opacity-50 pointer-events-none"
-                )}
-              >
-                여행지 다시 고르기
-              </button>
-            }
-            locationIndex={2}
-          />
-
-          <ChatMessage
-            firstLineMessage={"여행지는 20km 이내로"}
-            secondLineMessage={"무작위로 선택됩니다."}
-            locationIndex={3}
-          />
+            <ChatMessage
+              firstLineMessage={"여행지는 20km 이내로"}
+              secondLineMessage={"무작위로 선택됩니다."}
+              locationIndex={3}
+            />
+          </div>
         </div>
       </main>
     </div>
