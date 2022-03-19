@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import HelmetForTitle from "../components/Helmet";
+import HelmetForTitle from "../components/common/Helmet";
 
 const NotFound = () => {
   const navigate = useNavigate();

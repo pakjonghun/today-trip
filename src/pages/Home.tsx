@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import HelmetForTitle from "../components/Helmet";
 import { useImageSwitcher } from "../hooks/imageSwitcher";
 import { useAppDispatch } from "../hooks/reduxHooks";
-import background1 from "../images/background1.png";
-import background2 from "../images/background2.png";
 import { actions } from "../store/reducers/option.reducer";
-import { getId } from "../utility";
+import { getId } from "../utility/commonUtility";
+import HelmetForTitle from "../components/common/Helmet";
 
 const Home = () => {
-  const images = [background1, background2];
-
   const curIndex = useImageSwitcher({
-    imageLength: images.length,
+    imageLength: 2,
     duration: 10000,
   });
 
   const dispatch = useAppDispatch();
+
   useEffect(() => {
-    dispatch(actions.clear());
+    dispatch(actions.setClear());
   }, [dispatch]);
 
   return (
@@ -28,9 +25,9 @@ const Home = () => {
         <HelmetForTitle title="Home" />
         <motion.div
           style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,.5), rgba(0,0,0,.3)),url(${images[curIndex]})`,
+            backgroundImage: `linear-gradient(rgba(255,255,255,.5), rgba(0,0,0,.3)),url(${process.env.PUBLIC_URL}/images/background${curIndex}.png)`,
           }}
-          key={images[curIndex] + getId()}
+          key={getId()}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

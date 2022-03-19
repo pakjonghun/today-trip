@@ -1,7 +1,5 @@
 import React from "react";
-import HelmetForTitle from "../../components/Helmet";
-import ChatMessage from "./components/ChatMessage";
-import { getId, joinStyleClass } from "../../utility";
+import { getId, joinStyleClass } from "../../utility/commonUtility";
 import { useNavigate } from "react-router-dom";
 import { MotionValue, motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +7,8 @@ import {
   faArrowDownShortWide,
   faArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
+import ChatMessage from "../../components/travelDetail/ChatMessage";
+import HelmetForTitle from "../../components/common/Helmet";
 
 interface ITravelDetailPresenter {
   isLoading: boolean;
@@ -70,11 +70,11 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
 
       <motion.div
         style={{ opacity: messagesAnimation }}
-        className="absolute top-24 right-5 flex flex-col items-end"
+        className="absolute top-24 right-5 flex flex-col items-end z-20"
       >
         <div
           className={joinStyleClass(
-            "flex flex-col justify-between items-end h-[38vh] transition-transform duration-100 origin-top",
+            "flex flex-col justify-between items-end h-[330px] transition-transform duration-100 origin-top",
             isMessageOpen ? "scale-y--100" : "scale-y-0"
           )}
         >
@@ -106,7 +106,7 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
                   setSearchCount((pre) => pre + 1);
                 }}
                 className={joinStyleClass(
-                  "scale-effect text-pink-400 z-20",
+                  "scale-effect text-pink-400",
                   isLoading ? "opacity-50 pointer-events-none" : "",
                   title ? "" : "opacity-50 pointer-events-none"
                 )}
@@ -138,7 +138,7 @@ const TravelDetailPresenter: React.FC<ITravelDetailPresenter> = ({
       </motion.div>
       <main className="relative top-[55vh] pb-10">
         <div className="flex w-[95%] mx-auto">
-          <div className="flex flex-col w-[90%] z-20">
+          <div className="flex flex-col w-[90%]">
             <h2 className="mb-4">About</h2>
             {travel_theme && <p>여행테마 : {travel_theme.join(", ")}</p>}
             {title && <p>{title}</p>}

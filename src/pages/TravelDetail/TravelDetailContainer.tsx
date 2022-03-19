@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/reduxHooks";
 import { useImageSwitcher } from "../../hooks/imageSwitcher";
-import basicImage1 from "../../images/background1.png";
-import basicImage2 from "../../images/background2.png";
+
 import {
   detailParamMaker,
   filterCategory,
@@ -11,21 +10,27 @@ import {
   getTotalItems,
   imageParamMaker,
   locationParamMaker,
-} from "./utility";
+} from "../../utility/detailUtility";
 import {
   detailParamsType,
   imageContainerType,
   itemsType,
   locationParamsType,
-} from "./types";
-import { category1, category2, initItem } from "./constants";
+} from "../../types/travelDetailTypes";
+import {
+  category1,
+  category2,
+  initItem,
+} from "../../constants/travelDetailconstants";
 import TravelDetailPresenter from "./TravelDetailPresenter";
 import { useTransform, useViewportScroll } from "framer-motion";
 
 const TravelDetailContainer = () => {
+  const background0 = process.env.PUBLIC_URL + "/images/background0";
+  const background1 = process.env.PUBLIC_URL + "/images/background1";
   const navigate = useNavigate();
   const { travel_theme, location } = useAppSelector((state) => state.option);
-  const [images, setImages] = useState([basicImage1, basicImage2]);
+  const [images, setImages] = useState([background0, background1]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [searchCount, setSearchCount] = useState(0);
@@ -114,7 +119,7 @@ const TravelDetailContainer = () => {
           }
 
           if (!imageItems || !imageItems.length) {
-            setImages([basicImage1, basicImage2]);
+            setImages([background0, background1]);
           }
         }
       } catch (err) {

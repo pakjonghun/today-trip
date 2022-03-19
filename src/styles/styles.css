@@ -702,6 +702,10 @@ h2 {
   z-index: 20;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .m-1 {
   margin: 0.25rem;
 }
@@ -783,6 +787,22 @@ h2 {
 
 .h-96 {
   height: 24rem;
+}
+
+.h-\[96\] {
+  height: 96;
+}
+
+.h-\[400px\] {
+  height: 400px;
+}
+
+.h-\[300px\] {
+  height: 300px;
+}
+
+.h-\[330px\] {
+  height: 330px;
 }
 
 .min-h-screen {
@@ -952,6 +972,11 @@ h2 {
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.bg-red-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
 }
 
 .bg-cover {

@@ -46,7 +46,7 @@ const AppContainer = () => {
   useEffect(() => {
     if (latitude && longitude) {
       setIsLoading(false);
-      dispatch(actions.location({ longitude, latitude }));
+      dispatch(actions.setLocation({ longitude, latitude }));
     } else {
       setTimeout(() => {
         setLongitude(127);

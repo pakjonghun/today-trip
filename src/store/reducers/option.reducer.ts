@@ -30,20 +30,20 @@ const optionSlice = createSlice({
   name: "option",
   initialState,
   reducers: {
-    gender: (state, { payload }: PayloadAction<{ gender: string }>) => {
+    setGender: (state, { payload }: PayloadAction<{ gender: string }>) => {
       state.gender = payload.gender;
     },
 
-    age: (state, { payload }: PayloadAction<{ age: number }>) => {
+    setAge: (state, { payload }: PayloadAction<{ age: number }>) => {
       state.age = payload.age;
     },
-    travel_with: (
+    setTravelWith: (
       state,
       { payload }: PayloadAction<{ travel_with: string }>
     ) => {
       state.travel_with?.push(payload.travel_with);
     },
-    travel_theme: (
+    setTravelTheme: (
       state,
       { payload }: PayloadAction<{ travel_theme: string }>
     ) => {
@@ -64,10 +64,10 @@ const optionSlice = createSlice({
         state.travel_theme.push(payload.travel_theme);
       }
     },
-    location: (state, { payload }: PayloadAction<locationType>) => {
+    setLocation: (state, { payload }: PayloadAction<locationType>) => {
       state.location = payload;
     },
-    clear: (state) => ({ ...initialState, location: state.location }),
+    setClear: (state) => ({ ...initialState, location: state.location }),
   },
 });
 
